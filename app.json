@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "DoggieLog",
+    "slug": "DoggieLog",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/image/logoDL.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/image/carregamento.png",
+      "resizeMode": "center",
+      "backgroundColor": "#FFFACD"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/image/logoDL.png",
+        "backgroundColor": "#FFFACD"
+      }
+    },
+    "web": {
+      "favicon": "./assets/image/logoDL.png"
+    },
+    "plugins": [
+      "expo-font"
+    ]
+  }
+}
