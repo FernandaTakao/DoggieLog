@@ -5,7 +5,7 @@ const screenWidth = Dimensions.get("window").width;
 const spacingPercentageDados = 40;
 const spacingWidth = (screenWidth * spacingPercentageDados) / 100;
 
-const Styles = StyleSheet.create({
+const StylesHome = StyleSheet.create({
   containerPrincipal: {
     flex: 1,
     flexDirection: "column",
@@ -37,6 +37,8 @@ const Styles = StyleSheet.create({
     paddingto: "-10%",
   },
   containerMeio: {
+    paddingBottom: "%5",
+    paddingTop: "%5",
     flex: 0.74,
     flexDirection: "column",
     justifyContent: "flex-start",
@@ -47,8 +49,8 @@ const Styles = StyleSheet.create({
     marginBottom: 10,
   },
   fotoHome: {
-    width: "10%",
-    height: "10%",
+    width: "70%",
+    height: "70%",
     resizeMode: "contain",
   },
   containerBaixo: {
@@ -83,6 +85,7 @@ const Styles = StyleSheet.create({
     paddingLeft: 10,
     paddingBottom: 3,
   },
+
   buttonsMenu: {
     width: 40,
     height: 40,
@@ -94,9 +97,23 @@ const Styles = StyleSheet.create({
     fontSize: 10,
   },
   containerMedias: {
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    alignItems: "center",
     flex: 0.65,
     backgroundColor: "white",
     width: "100%",
+    paddingTop: "8%"
+  },
+  containerDropdown: {
+    paddingLeft: "10%",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#2A3F00",
+    width: "70%",
+    height: 40,
+    borderRadius: 40,
+    marginTop: 10,
   },
   imageEditarProfile: {
     width: "260%",
@@ -108,7 +125,8 @@ const Styles = StyleSheet.create({
   toachableOEditarProfile: {
     width: "100",
     height: '100',
-    backgroundColor: "green",
+    //backgroundColor: "green",
+    marginLeft: 10,
     marginBottom: 10,
     alignItems: "center",
   },
@@ -131,11 +149,26 @@ const Styles = StyleSheet.create({
   },
   txtValores: {
     fontSize: 15,
-    fontFamily: "RobotoReguar",
+    fontFamily: "RobotoRegular",
     //marginHorizontal: spacingWidth / 2,
     paddingRight: "15%",
     paddingLeft: "17%",
   },
+  buttonMenu:{
+    backgroundColor: '#2A3F00',
+    width: 50,
+    height: 15,
+    
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  txtButton: {
+    fontFamily: "RobotoMedium",
+    color: "#black",
+    textAlign: "center",
+    fontSize: 19,
+    
+  }
 });
 
-export default Styles;
+export default StylesHome;

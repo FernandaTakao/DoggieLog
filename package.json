@@ -13,13 +13,14 @@
     "@expo-google-fonts/roboto": "^0.2.3",
     "@react-navigation/native-stack": "^6.9.26",
     "expo": "~50.0.14",
-    "expo-app-loading": "^2.1.1",
     "expo-font": "~11.10.3",
     "expo-splash-screen": "~0.26.5",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",
     "react-native": "0.73.6",
-    "react-native-gesture-handler": "~2.14.0"
+    "react-native-gesture-handler": "~2.14.0",
+    "react-native-picker-select": "^9.1.3",
+    "react-native-select-dropdown": "^4.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
