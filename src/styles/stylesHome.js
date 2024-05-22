@@ -106,14 +106,16 @@ const StylesHome = StyleSheet.create({
     paddingTop: "8%"
   },
   containerDropdown: {
-    paddingLeft: "10%",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#2A3F00",
     width: "70%",
-    height: 40,
+    height: "10%",
     borderRadius: 40,
     marginTop: 10,
+    color: "white",
+    fontFamily: "RobotoRegular",
   },
   imageEditarProfile: {
     width: "260%",
@@ -167,8 +169,14 @@ const StylesHome = StyleSheet.create({
     color: "#black",
     textAlign: "center",
     fontSize: 19,
-    
-  }
+  },
+  placeholder: {
+    color: "#EEE69C",
+    fontFamily: "RobotoRegular",
+    fontSize: 18,
+    textAlign: "justify",
+    //marginLeft: 20,
+  },
 });
 
 export default StylesHome;

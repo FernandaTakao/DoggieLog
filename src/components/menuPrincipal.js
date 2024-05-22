@@ -11,7 +11,7 @@ const MenuPrincipalIcones = () => {
   };
 
   const navigateL = () => {
-    navigation.navigate("logs");
+    navigation.navigate("singupTutor");
   };
 
   const navigateM = () => {

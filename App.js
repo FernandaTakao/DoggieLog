@@ -1,9 +1,9 @@
 import "react-native-gesture-handler";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { Suspense } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
+import { ActivityIndicator, View } from "react-native";
 import Login from "./src/screens/login";
-import SingupTutor from "./src/screens/singupTutor";
 import SingupCaozinho from "./src/screens/singupCaozinho";
 import Home from "./src/screens/home";
 import Logs from "./src/screens/logs";
@@ -13,29 +13,33 @@ import Guide from "./src/screens/guide";
 import EditProfile from "./src/screens/editProfile";
 import Monitoring from "./src/screens/monitoring";
 import { useFonts } from "expo-font";
-import { AppLoading } from "expo";
-import * as Font from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
-import Entypo from "@expo/vector-icons/Entypo";
+import LocalDB from "./src/database/initDB";
+import SingupTutor from "./src/screens/singupTutor";
+import { SQLiteProvider } from "expo-sqlite";
 
-const Stack = createNativeStackNavigator();
-//SplashScreen.preventAutoHideAsync();
 
-function App() {
-  const [loaded] = useFonts({// function for expo-font 
-    'RobotoRegular': require("./assets/fonts/Roboto-Regular.ttf"),
-    'RobotoMedium': require("./assets/fonts/Roboto-Medium.ttf"),
-    'NunitoRegular': require("./assets/fonts/Nunito-Regular.ttf"),
-    'NunitoSemiBold': require("./assets/fonts/Nunito-SemiBold.ttf"),
-    'Brugty': require("./assets/fonts/Brugty DEMO.ttf"),
+function DefineApp() {
+  const Stack = createNativeStackNavigator();
+  const [loaded] = useFonts({
+    RobotoRegular: require("./assets/fonts/Roboto-Regular.ttf"),
+    RobotoMedium: require("./assets/fonts/Roboto-Medium.ttf"),
+    NunitoRegular: require("./assets/fonts/Nunito-Regular.ttf"),
+    NunitoSemiBold: require("./assets/fonts/Nunito-SemiBold.ttf"),
+    NunitoMedium: require("./assets/fonts/Nunito-Medium.ttf"),
+    Brugty: require("./assets/fonts/Brugty DEMO.ttf"),
   });
+
   if (!loaded) {
-    return null;
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
   }
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="home">
+      <Stack.Navigator initialRouteName="singupTutor">
         <Stack.Screen
           name="login"
           component={Login}
@@ -90,5 +94,24 @@ function App() {
     </NavigationContainer>
   );
 }
+
+const App = () => {
+  return (
+    <Suspense
+      fallback={
+        <View style={{ flex: 1 }}>
+          <ActivityIndicator size={"large"} />
+        </View>
+      }
+    >
+      <SQLiteProvider
+        databaseName="doggielogDB.db"
+        assetSource={{ assetId: require("./src/database/doggielogDB.db") }}
+      >
+        <DefineApp />
+      </SQLiteProvider>
+    </Suspense>
+  );
+};
 
 export default App;

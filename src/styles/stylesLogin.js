@@ -5,14 +5,20 @@ const spacingWidth = (screenWidth * spacingPercentageDados) / 100;
 const screenWidth = Dimensions.get("window").width;
 const screenHeight = Dimensions.get("window").height;
 const maxHeight = 0.9 * screenHeight;
+import {
+  widthPercentageToDP,
+  heightPercentageToDP,
+} from "react-native-responsive-screen";
 
 const StylesLogin = StyleSheet.create({
   containerPrincipal: {
     flex: 1,
+    paddingTop: 2,
     flexDirection: "column",
     alignItems: "flex-start",
     justifyContent: "flex-end",
     backgroundColor: "#2A3F00",
+    overflow: "scroll",
   },
   containerFrente: {
     flexDirection: "column",
@@ -43,17 +49,18 @@ const StylesLogin = StyleSheet.create({
     marginLeft: 50,
     opacity: 0.6,
   },
-  txtBox: {
+  inputContainer: {
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
     backgroundColor: "white",
-    width: "80%",
-    height: "8.5%",
+    width: widthPercentageToDP("80%"),
+    height: heightPercentageToDP("8.3%"),
     elevation: 5,
     shadowColor: "black",
     borderRadius: 30,
     marginBottom: 43,
+    marginTop: -20,
   },
   icons: {
     width: "50%",
@@ -63,11 +70,12 @@ const StylesLogin = StyleSheet.create({
     marginLeft: -50,
   },
   foto: {
-    width: "38%",
-    height: "38%",
+    width: widthPercentageToDP("38%"),
+    height: heightPercentageToDP("38%"),
     opacity: 0.8,
     resizeMode: "contain",
-    //top: -20,
+    top: "-5%",
+    marginBottom: "-10%",
   },
   txtInput: {
     width: "100%",
@@ -75,9 +83,13 @@ const StylesLogin = StyleSheet.create({
     color: "black",
     textAlign: "justify",
     marginLeft: -50,
+    fontFamily: "RobotoRegular",
+    fontSize: 18,
   },
   scrollViewContent: {
     flexGrow: 1,
+    width: widthPercentageToDP("100%"),
+    height: heightPercentageToDP("100%"),
     justifyContent: "flex-end",
   },
   button: {
@@ -85,14 +97,14 @@ const StylesLogin = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#2A3F00",
-    width: "80%",
-    height: "8.5%",
+    width: widthPercentageToDP("80%"),
+    height: heightPercentageToDP("8.3%"),
     borderRadius: 30,
     elevation: 5,
     shadowColor: "black",
-    marginTop: 33,
+    marginTop: 15,
   },
-  txtCadastroSenha: {
+  singupLink: {
     fontFamily: "RobotoRegular",
     color: "black",
     fontSize: 15,
@@ -100,17 +112,112 @@ const StylesLogin = StyleSheet.create({
   },
   enfeite: {
     flex: 1,
-    width: "100%",
     alignSelf: "baseline",
     resizeMode: "contain",
-    width: "190%",
-    height: "180%",
-    transform: [{rotate: '35deg'}],
+    width: "170%",
+    height: "150%",
+    transform: [{ rotate: "35deg" }],
     position: "absolute",
-    marginTop: "-35%",
-    marginLeft: "-55%",
-    opacity: 0.4,
-    //maxHeight: maxHeight,
+    marginTop: "-10%",
+    marginLeft: "-40%",
+    opacity: 0.3,
+  },
+
+  // para a tela de cadastro do tutor
+  passo1: {
+    width: widthPercentageToDP("27%"),
+    height: heightPercentageToDP("27%"),
+    resizeMode: "contain",
+    marginTop: "-18%",
+  },
+  text: {
+    fontFamily: "NunitoMedium",
+    color: "black",
+    fontSize: 14,
+    textAlign: "justify",
+    width: widthPercentageToDP("80%"),
+    marginTop: "-14%",
+  },
+  enfeiteInverso: {
+    flex: 1,
+    alignSelf: "baseline",
+    resizeMode: "contain",
+    width: widthPercentageToDP("210%"),
+    height: heightPercentageToDP("190%"),
+    transform: [{ rotate: "-40deg" }],
+    position: "absolute",
+    marginTop: "-50%",
+    marginLeft: "-50%",
+    opacity: 0.2,
+  },
+
+  //para a tela do cadastro/edição de dados do cãozinho
+  enviarFoto: {
+    width: "22%",
+    height: "22%",
+    resizeMode: "contain",
+    opacity: 0.8,
+    marginTop: "-23%",
+  },
+  passo2: {
+    width: widthPercentageToDP("20.5%"),
+    height: heightPercentageToDP("20.5%"),
+    resizeMode: "contain",
+    marginTop: "-14%",
+  },
+  mensagem: {
+    fontFamily: "NunitoMedium",
+    fontSize: 11,
+    textAlign: "center",
+    marginTop: "-8%",
+    marginBottom: "10%",
+  },
+  inputCaozinho: {
+    height: heightPercentageToDP("5%"),
+    marginBottom: 36,
+  },
+  txtCaozinho: {
+    fontSize: 14,
+    marginLeft: "-20%",
+  },
+  picker: {
+    color: "black",
+    textAlign: "center",
+    paddingHorizontal: 100,
+  },
+  placeholder: {
+    color: "#b6b6b6",
+    fontFamily: "RobotoRegular",
+    fontSize: 14.5,
+    textAlign: "justify",
+    marginLeft: "-15%",
+  },
+  tapador: {
+    width: 1,
+    height: 1,
+    opacity: 0,
+  },
+  buttonCaozinho: {
+    width: widthPercentageToDP("80%"),
+    height: heightPercentageToDP("6.3%"),
+    marginTop: -2,
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.6)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  closeButton: {
+    position: "absolute",
+    top: 20,
+    right: 20,
+  },
+  error: {
+    color: "red",
+    marginBottom: 10,
+    textAlign: "center",
+    paddingHorizontal: 5,
   },
 });
 
