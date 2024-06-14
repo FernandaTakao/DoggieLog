@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Text,
   View,
@@ -6,13 +6,12 @@ import {
   TextInput,
   ScrollView,
   TouchableOpacity,
-  Keyboard,
   Platform,
   KeyboardAvoidingView,
 } from "react-native";
-import StylesLogin from "../styles/stylesLogin";
+import StylesLoginSingups from "../styles/stylesLoginSingups";
 import RNPickerSelect from "react-native-picker-select";
-import { Calendar, LocaleConfig } from "react-native-calendars";
+import { Calendar } from "react-native-calendars";
 
 const SingupCaozinho = () => {
   const [nome, setNome] = useState("");
@@ -76,32 +75,32 @@ const SingupCaozinho = () => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == "ios" ? "padding" : "height"}
-      style={[StylesLogin.containerPrincipal]}
+      style={[StylesLoginSingups.containerPrincipal]}
     >
-      <ScrollView contentContainerStyle={StylesLogin.scrollViewContent}>
-        <Text style={[StylesLogin.title, { marginTop: 20 }]}>DADOS</Text>
-        <Text style={StylesLogin.subtitle}>CÃOZINHO</Text>
-        <View style={[StylesLogin.containerFrente, { flex: 0.95 }]}>
+      <ScrollView contentContainerStyle={StylesLoginSingups.scrollViewContent}>
+        <Text style={[StylesLoginSingups.title, { marginTop: 20 }]}>DADOS</Text>
+        <Text style={StylesLoginSingups.subtitle}>CÃOZINHO</Text>
+        <View style={[StylesLoginSingups.containerFrente, { flex: 0.95 }]}>
           <Image
             source={require("../../assets/image/enfeiteInverso.png")}
-            style={[StylesLogin.enfeiteInverso]}
+            style={[StylesLoginSingups.enfeiteInverso]}
           />
           <Image
             source={require("../../assets/image/passo2.png")}
-            style={StylesLogin.passo2}
+            style={StylesLoginSingups.passo2}
           />
           <Image
             source={require("../../assets/image/enviarFoto.png")}
-            style={StylesLogin.enviarFoto}
+            style={StylesLoginSingups.enviarFoto}
           />
-          <Text style={[StylesLogin.mensagem]}>Carregue uma foto</Text>
-          <View style={[StylesLogin.inputContainer, StylesLogin.inputCaozinho]}>
+          <Text style={[StylesLoginSingups.mensagem]}>Carregue uma foto</Text>
+          <View style={[StylesLoginSingups.inputContainer, StylesLoginSingups.inputCaozinho]}>
             <Image
               source={require("../../assets/image/nome.png")}
-              style={[StylesLogin.icons, { marginLeft: -60 }]}
+              style={[StylesLoginSingups.icons, { marginLeft: -60 }]}
             />
             <TextInput
-              style={[StylesLogin.txtInput, StylesLogin.txtCaozinho]}
+              style={[StylesLoginSingups.txtInput, StylesLoginSingups.txtCaozinho]}
               placeholder="Nome"
               placeholderTextColor="#b6b6b6"
               underlineColorAndroid="transparent"
@@ -109,10 +108,10 @@ const SingupCaozinho = () => {
               onChangeText={setNome}
             />
           </View>
-          <View style={[StylesLogin.inputContainer, StylesLogin.inputCaozinho]}>
+          <View style={[StylesLoginSingups.inputContainer, StylesLoginSingups.inputCaozinho]}>
             <Image
               source={require("../../assets/image/nascimento.png")}
-              style={[StylesLogin.icons, { marginLeft: -60 }]}
+              style={[StylesLoginSingups.icons, { marginLeft: -60 }]}
             />
             <View
               style={{
@@ -125,9 +124,9 @@ const SingupCaozinho = () => {
               <TouchableOpacity onPress={showCalendar}>
                 <Text
                   style={[
-                    StylesLogin.txtInput,
-                    StylesLogin.txtCaozinho,
-                    StylesLogin.placeholder,
+                    StylesLoginSingups.txtInput,
+                    StylesLoginSingups.txtCaozinho,
+                    StylesLoginSingups.placeholder,
                     { color: sexo ? "black" : "#b6b6b6" },
                   ]}
                 >
@@ -137,10 +136,10 @@ const SingupCaozinho = () => {
             </View>
           </View>
 
-          <View style={[StylesLogin.inputContainer, StylesLogin.inputCaozinho]}>
+          <View style={[StylesLoginSingups.inputContainer, StylesLoginSingups.inputCaozinho]}>
             <Image
               source={require("../../assets/image/sexo.png")}
-              style={[StylesLogin.icons, { marginLeft: -57 }]}
+              style={[StylesLoginSingups.icons, { marginLeft: -57 }]}
             />
             <View
               style={{
@@ -155,16 +154,16 @@ const SingupCaozinho = () => {
                 useNativeAndroidPickerStyle={false}
                 style={{
                   inputIOS: [
-                    StylesLogin.txtInput,
-                    StylesLogin.txtCaozinho,
-                    StylesLogin.placeholder,
+                    StylesLoginSingups.txtInput,
+                    StylesLoginSingups.txtCaozinho,
+                    StylesLoginSingups.placeholder,
                   ],
                   inputAndroid: [
-                    StylesLogin.txtInput,
-                    StylesLogin.txtCaozinho,
-                    StylesLogin.placeholder,
+                    StylesLoginSingups.txtInput,
+                    StylesLoginSingups.txtCaozinho,
+                    StylesLoginSingups.placeholder,
                   ],
-                  placeholder: StylesLogin.placeholder,
+                  placeholder: StylesLoginSingups.placeholder,
                 }}
                 placeholder={{ label: "Selecione o sexo", value: null }}
                 placeholderTextColor="#b6b6b6"
@@ -176,13 +175,13 @@ const SingupCaozinho = () => {
             </View>
           </View>
 
-          <View style={[StylesLogin.inputContainer, StylesLogin.inputCaozinho]}>
+          <View style={[StylesLoginSingups.inputContainer, StylesLoginSingups.inputCaozinho]}>
             <Image
               source={require("../../assets/image/peso.png")}
-              style={[StylesLogin.icons, { marginLeft: -60 }]}
+              style={[StylesLoginSingups.icons, { marginLeft: -60 }]}
             />
             <TextInput
-              style={[StylesLogin.txtInput, StylesLogin.txtCaozinho]}
+              style={[StylesLoginSingups.txtInput, StylesLoginSingups.txtCaozinho]}
               placeholder="Peso"
               placeholderTextColor="#b6b6b6"
               underlineColorAndroid="transparent"
@@ -190,13 +189,13 @@ const SingupCaozinho = () => {
               onChangeText={setPeso}
             />
           </View>
-          <View style={[StylesLogin.inputContainer, StylesLogin.inputCaozinho]}>
+          <View style={[StylesLoginSingups.inputContainer, StylesLoginSingups.inputCaozinho]}>
             <Image
               source={require("../../assets/image/porte.png")}
-              style={[StylesLogin.icons, { marginLeft: -60 }]}
+              style={[StylesLoginSingups.icons, { marginLeft: -60 }]}
             />
             <TextInput
-              style={[StylesLogin.txtInput, StylesLogin.txtCaozinho]}
+              style={[StylesLoginSingups.txtInput, StylesLoginSingups.txtCaozinho]}
               placeholder="Porte"
               placeholderTextColor="#b6b6b6"
               underlineColorAndroid="transparent"
@@ -204,13 +203,13 @@ const SingupCaozinho = () => {
               onChangeText={setPorte}
             />
           </View>
-          <View style={[StylesLogin.inputContainer, StylesLogin.inputCaozinho]}>
+          <View style={[StylesLoginSingups.inputContainer, StylesLoginSingups.inputCaozinho]}>
             <Image
               source={require("../../assets/image/raca.png")}
-              style={[StylesLogin.icons, { marginLeft: -60 }]}
+              style={[StylesLoginSingups.icons, { marginLeft: -60 }]}
             />
             <TextInput
-              style={[StylesLogin.txtInput, StylesLogin.txtCaozinho]}
+              style={[StylesLoginSingups.txtInput, StylesLoginSingups.txtCaozinho]}
               placeholder="Raça"
               placeholderTextColor="#b6b6b6"
               underlineColorAndroid="transparent"
@@ -218,10 +217,10 @@ const SingupCaozinho = () => {
               onChangeText={setRaca}
             />
           </View>
-          <View style={[StylesLogin.inputContainer, StylesLogin.inputCaozinho]}>
+          <View style={[StylesLoginSingups.inputContainer, StylesLoginSingups.inputCaozinho]}>
             <Image
               source={require("../../assets/image/castrado.png")}
-              style={[StylesLogin.icons, { marginLeft: -60, opacity: 0.65 }]}
+              style={[StylesLoginSingups.icons, { marginLeft: -60, opacity: 0.65 }]}
             />
             <View
               style={{
@@ -236,16 +235,16 @@ const SingupCaozinho = () => {
                 useNativeAndroidPickerStyle={false}
                 style={{
                   inputIOS: [
-                    StylesLogin.txtInput,
-                    StylesLogin.txtCaozinho,
-                    StylesLogin.placeholder,
+                    StylesLoginSingups.txtInput,
+                    StylesLoginSingups.txtCaozinho,
+                    StylesLoginSingups.placeholder,
                   ],
                   inputAndroid: [
-                    StylesLogin.txtInput,
-                    StylesLogin.txtCaozinho,
-                    StylesLogin.placeholder,
+                    StylesLoginSingups.txtInput,
+                    StylesLoginSingups.txtCaozinho,
+                    StylesLoginSingups.placeholder,
                   ],
-                  placeholder: StylesLogin.placeholder,
+                  placeholder: StylesLoginSingups.placeholder,
                 }}
                 placeholder={{ label: "Castrado?", value: null }}
                 placeholderTextColor="#b6b6b6"
@@ -256,7 +255,7 @@ const SingupCaozinho = () => {
               />
             </View>
           </View>
-          <View style={[StylesLogin.button, StylesLogin.buttonCaozinho]}>
+          <View style={[StylesLoginSingups.button, StylesLoginSingups.buttonCaozinho]}>
             <TouchableOpacity>
               <Text
                 style={{

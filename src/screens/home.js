@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import MenuPrincipalIcones from "../components/menuPrincipal";
 import { MenuPrincipalRotulos } from "../components/menuPrincipal";
 import RNPickerSelect from "react-native-picker-select";
-
+import StylesMenu from "../styles/stylesMenu";
 
 const Home = () => {
   const [relatorio, setRelatorio] = useState("");
@@ -13,8 +13,18 @@ const Home = () => {
   const navigation = useNavigation();
 
   const navigateEP = () => {
-    navigation.navigate("singupCaozinho");
+    navigation.navigate("editProfile");
   };
+  const navigateL = () => {
+    navigation.navigate("login.");
+  };
+  const navigateCT = () => {
+    navigation.navigate("singupTutor");
+  };
+  const navigateCC = () => {
+    navigation.navigate("singupCaozinho");
+  }
+
   const pickerStyle = {
     inputIOS: [
       StylesHome.containerDropdown,
@@ -76,16 +86,28 @@ const Home = () => {
             color="white"
             style={pickerStyle}
             placeholder={{ label: "Selecione um relatório", value: null }}
-            placeholderTextColor="#EEE69C"
+            placeholderTextColor="#ffffff"
             underlineColorAndroid="transparent"
             items={relatorios}
             onValueChange={(value) => setRelatorio(value)} 
             value={relatorio}
           />
         </View>
+        <TouchableOpacity onPress={navigateCT}>
+          <Text style={{fontSize: 20}}>CADASTRO TUTOR</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={navigateCT}>
+          <Text style={{fontSize: 20}}>CADASTRO TUTOR</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={navigateCC}>
+          <Text style={{fontSize: 20}}>CADASTRO CAOZINHO</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={navigateL}>
+          <Text style={{fontSize: 20}}>LOGIN</Text>
+        </TouchableOpacity>
       </View>
-      <MenuPrincipalIcones style={StylesHome.containerMenu} />
-      <MenuPrincipalRotulos style={StylesHome.containerEtiquetas} />
+      <MenuPrincipalIcones style={StylesMenu.containerMenu} />
+      <MenuPrincipalRotulos style={StylesMenu.containerEtiquetas} />
     </View>
   );
 };

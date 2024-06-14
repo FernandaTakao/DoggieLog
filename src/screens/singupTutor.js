@@ -1,4 +1,8 @@
-import React, { useState, useContext } from "react";
+
+
+// src/screens/singupTutor.js
+
+import React, { useState } from "react";
 import {
   Text,
   View,
@@ -9,10 +13,10 @@ import {
   Platform,
   KeyboardAvoidingView,
 } from "react-native";
-import StylesLogin from "../styles/stylesLogin";
+import StylesLoginSingups from "../styles/stylesLoginSingups";
 import { useNavigation } from "@react-navigation/native";
-import { SQLiteContext } from "expo-sqlite";
-import { createTutor } from "../models/tutorModel";
+import { useRegisterContext } from "../components/registerContext";
+import Tutor from "../model/tutorModel";
 
 const SingupTutor = () => {
   const [user, setUser] = useState("");
@@ -20,14 +24,30 @@ const SingupTutor = () => {
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigation = useNavigation();
+  const { saveTutorData } = useRegisterContext();
+  const { createT, checkUserExists } = Tutor();
 
   const saveTutor = async () => {
     try {
-      await createTutor(user, password, passwordConfirm);
-      setErrorMessage("");
+      if (!user.trim() || !password.trim() || !passwordConfirm.trim()) {
+        throw new Error("Por favor, preencha todos os campos.");
+      }
+      if (user.length < 8 || password.length < 8) {
+        throw new Error("A senha e o nome de usuário devem ter no mínimo 8 caracteres!");
+      }
+      if (password !== passwordConfirm) {
+        throw new Error("As senhas não coincidem!");
+      }
+
+      const userExists = await checkUserExists(user);
+      if (userExists) {
+        throw new Error("Nome de usuário já existe!");
+      }
+
+      saveTutorData({ user, password });
+      await createT(user, password);
       navigation.navigate("singupCaozinho");
     } catch (error) {
-      console.log("não conseguiu entrar na função de criar");
       setErrorMessage(error.message);
     }
   };
@@ -35,32 +55,32 @@ const SingupTutor = () => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={StylesLogin.containerPrincipal}
+      style={StylesLoginSingups.containerPrincipal}
     >
-      <ScrollView contentContainerStyle={StylesLogin.scrollViewContent}>
-        <Text style={StylesLogin.title}>CADASTRE-SE!</Text>
-        <Text style={StylesLogin.subtitle}>TUTOR</Text>
-        <View style={StylesLogin.containerFrente}>
+      <ScrollView contentContainerStyle={StylesLoginSingups.scrollViewContent}>
+        <Text style={StylesLoginSingups.title}>CADASTRE-SE!</Text>
+        <Text style={StylesLoginSingups.subtitle}>TUTOR</Text>
+        <View style={StylesLoginSingups.containerFrente}>
           <Image
             source={require("../../assets/image/enfeiteInverso.png")}
-            style={[StylesLogin.enfeiteInverso]}
+            style={[StylesLoginSingups.enfeiteInverso]}
           />
           <Image
             source={require("../../assets/image/passo1.png")}
-            style={StylesLogin.passo1}
+            style={StylesLoginSingups.passo1}
           />
-          <Text style={StylesLogin.text}>
+          <Text style={StylesLoginSingups.text}>
             Vamos adicionar seus dados cadastrais. Memorize-os bem ou anote-os
             num lugar seguro, pois será com eles que você acessará o sistema
             daqui em diante.
           </Text>
-          <View style={[StylesLogin.inputContainer, { marginTop: 30 }]}>
+          <View style={[StylesLoginSingups.inputContainer, { marginTop: 30 }]}>
             <Image
               source={require("../../assets/image/email.png")}
-              style={StylesLogin.icons}
+              style={StylesLoginSingups.icons}
             />
             <TextInput
-              style={StylesLogin.txtInput}
+              style={StylesLoginSingups.txtInput}
               placeholder="Nome de usuário"
               placeholderTextColor="#b6b6b6"
               underlineColorAndroid="transparent"
@@ -68,13 +88,13 @@ const SingupTutor = () => {
               onChangeText={setUser}
             />
           </View>
-          <View style={StylesLogin.inputContainer}>
+          <View style={StylesLoginSingups.inputContainer}>
             <Image
               source={require("../../assets/image/senha.png")}
-              style={StylesLogin.icons}
+              style={StylesLoginSingups.icons}
             />
             <TextInput
-              style={StylesLogin.txtInput}
+              style={StylesLoginSingups.txtInput}
               placeholder="Senha"
               placeholderTextColor="#b6b6b6"
               underlineColorAndroid="transparent"
@@ -83,13 +103,13 @@ const SingupTutor = () => {
               secureTextEntry
             />
           </View>
-          <View style={StylesLogin.inputContainer}>
+          <View style={StylesLoginSingups.inputContainer}>
             <Image
               source={require("../../assets/image/senha.png")}
-              style={StylesLogin.icons}
+              style={StylesLoginSingups.icons}
             />
             <TextInput
-              style={StylesLogin.txtInput}
+              style={StylesLoginSingups.txtInput}
               placeholder="Repita sua senha"
               placeholderTextColor="#b6b6b6"
               underlineColorAndroid="transparent"
@@ -99,16 +119,10 @@ const SingupTutor = () => {
             />
           </View>
           {errorMessage ? (
-            <Text style={StylesLogin.errorMessage}>{errorMessage}</Text>
+            <Text style={StylesLoginSingups.error}>{errorMessage}</Text>
           ) : null}
-          <TouchableOpacity style={StylesLogin.button} onPress={saveTutor}>
-            <Text
-              style={{
-                fontFamily: "NunitoSemiBold",
-                fontSize: 23,
-                color: "#FFFACD",
-              }}
-            >
+          <TouchableOpacity style={StylesLoginSingups.button} onPress={saveTutor}>
+            <Text style={{ fontFamily: "NunitoSemiBold", fontSize: 23, color: "#FFFACD" }}>
               ENVIAR
             </Text>
           </TouchableOpacity>

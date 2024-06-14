@@ -1,9 +1,7 @@
 
+//StylesHome
 
-import { StyleSheet, Dimensions } from "react-native";
-const screenWidth = Dimensions.get("window").width;
-const spacingPercentageDados = 40;
-const spacingWidth = (screenWidth * spacingPercentageDados) / 100;
+import { StyleSheet} from "react-native";
 
 const StylesHome = StyleSheet.create({
   containerPrincipal: {
@@ -14,7 +12,7 @@ const StylesHome = StyleSheet.create({
     backgroundColor: "white",
   },
   containerCima: {
-    flex: 0.45,
+    flex: 0.36,
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
@@ -25,25 +23,24 @@ const StylesHome = StyleSheet.create({
     elevation: 1,
     shadowColor: "#CBCBCB",
     paddingTop: "8%",
+    paddingBottom: 10,
   },
   containerCimaCima: {
     flex: 0.10,
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "flex-start",
-    //backgroundColor: "red",
     width: "100%",
     paddingLeft: "80%",
     paddingto: "-10%",
   },
   containerMeio: {
-    paddingBottom: "%5",
+    paddingBottom: "%2",
     paddingTop: "%5",
-    flex: 0.74,
+    flex: 0.72,
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
-    //backgroundColor: "gray",
     width: "100%",
     height: "100%",
     marginBottom: 10,
@@ -54,19 +51,18 @@ const StylesHome = StyleSheet.create({
     resizeMode: "contain",
   },
   containerBaixo: {
-    flex: 0.083,
+    flex: 0.085,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-start",
-    //backgroundColor: "blue",
     width: "100%",
-    //paddingTop: "5%",
+    marginBottom: 0.5,
   },
   containerMenu: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    flex: 0.065,
+    flex: 0.06,
     backgroundColor: "#FFFACD",
     width: "100%",
     elevation: 1,
@@ -78,18 +74,17 @@ const StylesHome = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    flex: 0.025,
+    flex: 0.02,
     backgroundColor: "#FFFACD",
     width: "100%",
     paddingRight: 10,
     paddingLeft: 10,
     paddingBottom: 3,
   },
-
   buttonsMenu: {
     width: 40,
-    height: 40,
-    //resizeMode: "contain",
+    height: 35,
+    resizeMode: "contain"
   },
   etiquetas: {
     fontFamily: "RobotoRegular",
@@ -100,7 +95,7 @@ const StylesHome = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
-    flex: 0.65,
+    flex: 0.56,
     backgroundColor: "white",
     width: "100%",
     paddingTop: "8%"
@@ -115,7 +110,7 @@ const StylesHome = StyleSheet.create({
     borderRadius: 40,
     marginTop: 10,
     color: "white",
-    fontFamily: "RobotoRegular",
+    fontFamily: "NunitoSemiBold",
   },
   imageEditarProfile: {
     width: "260%",
@@ -127,7 +122,6 @@ const StylesHome = StyleSheet.create({
   toachableOEditarProfile: {
     width: "100",
     height: '100',
-    //backgroundColor: "green",
     marginLeft: 10,
     marginBottom: 10,
     alignItems: "center",
@@ -141,18 +135,15 @@ const StylesHome = StyleSheet.create({
   txtHome: {
     fontFamily: "RobotoMedium",
     color: "#FFFFFF",
-    // textAlign: "center",
   },
   txtDados: {
-    fontSize: 18,
-    //marginHorizontal: spacingWidth / 2,
+    fontSize: 17,
     paddingRight: "17%",
     paddingLeft: "17%",
   },
   txtValores: {
     fontSize: 15,
     fontFamily: "RobotoRegular",
-    //marginHorizontal: spacingWidth / 2,
     paddingRight: "15%",
     paddingLeft: "17%",
   },
@@ -172,10 +163,9 @@ const StylesHome = StyleSheet.create({
   },
   placeholder: {
     color: "#EEE69C",
-    fontFamily: "RobotoRegular",
-    fontSize: 18,
+    fontFamily: "NunitoSemiBold",
+    fontSize: 16,
     textAlign: "justify",
-    //marginLeft: 20,
   },
 });
 

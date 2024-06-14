@@ -1,16 +1,13 @@
-import { StyleSheet, Dimensions } from "react-native";
-import React from "react";
-const spacingPercentageDados = 40;
-const spacingWidth = (screenWidth * spacingPercentageDados) / 100;
-const screenWidth = Dimensions.get("window").width;
-const screenHeight = Dimensions.get("window").height;
-const maxHeight = 0.9 * screenHeight;
+
+//stylesLoginSingups.js
+
+import { StyleSheet} from "react-native";
 import {
   widthPercentageToDP,
   heightPercentageToDP,
 } from "react-native-responsive-screen";
 
-const StylesLogin = StyleSheet.create({
+const StylesLoginSingups = StyleSheet.create({
   containerPrincipal: {
     flex: 1,
     paddingTop: 2,
@@ -38,7 +35,6 @@ const StylesLogin = StyleSheet.create({
     fontSize: 40,
     color: "#FF8E73",
     textAlign: "left",
-    //marginBottom: 40,
     marginLeft: 50,
   },
   subtitle: {
@@ -123,7 +119,6 @@ const StylesLogin = StyleSheet.create({
     opacity: 0.3,
   },
 
-  // para a tela de cadastro do tutor
   passo1: {
     width: widthPercentageToDP("27%"),
     height: heightPercentageToDP("27%"),
@@ -151,7 +146,6 @@ const StylesLogin = StyleSheet.create({
     opacity: 0.2,
   },
 
-  //para a tela do cadastro/edição de dados do cãozinho
   enviarFoto: {
     width: "22%",
     height: "22%",
@@ -215,10 +209,12 @@ const StylesLogin = StyleSheet.create({
   },
   error: {
     color: "red",
-    marginBottom: 10,
+    marginTop: -10,
+    marginBottom: 5,
     textAlign: "center",
     paddingHorizontal: 5,
+    fontSize: 12.5,
   },
 });
 
-export default StylesLogin;
+export default StylesLoginSingups;

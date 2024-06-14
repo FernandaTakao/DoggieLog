@@ -1,5 +1,5 @@
+import StylesMenu from '../styles/stylesMenu'
 import React from "react";
-import StylesHome from "../styles/stylesHome";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -11,7 +11,7 @@ const MenuPrincipalIcones = () => {
   };
 
   const navigateL = () => {
-    navigation.navigate("singupTutor");
+    navigation.navigate("logs");
   };
 
   const navigateM = () => {
@@ -25,18 +25,21 @@ const MenuPrincipalIcones = () => {
   const navigateG = () => {
     navigation.navigate("guide");
   };
+  const navigateN = () =>{
+    navigation.navigate("note")
+  }
 
   return (
-      <View style={StylesHome.containerMenu}>
+      <View style={StylesMenu.containerMenu}>
         <TouchableOpacity onPress={navigateH}>
           <Image
-            style={StylesHome.buttonsMenu}
+            style={StylesMenu.buttonsMenu}
             source={require("../../assets/image/principal.png")}
           />
         </TouchableOpacity>
         <TouchableOpacity onPress={navigateL}>
           <Image
-            style={StylesHome.buttonsMenu}
+            style={StylesMenu.buttonsMenu}
             source={require("../../assets/image/registros.png")}
           />
         </TouchableOpacity>
@@ -48,13 +51,13 @@ const MenuPrincipalIcones = () => {
         </TouchableOpacity>
         <TouchableOpacity onPress={navigateC}>
           <Image
-            style={StylesHome.buttonsMenu}
+            style={StylesMenu.buttonsMenu}
             source={require("../../assets/image/calendario.png")}
           />
         </TouchableOpacity>
         <TouchableOpacity onPress={navigateG}>
           <Image
-            style={StylesHome.buttonsMenu}
+            style={StylesMenu.buttonsMenu}
             source={require("../../assets/image/manual.png")}
           />
         </TouchableOpacity>
@@ -64,12 +67,12 @@ const MenuPrincipalIcones = () => {
 
 export const MenuPrincipalRotulos = () => {
   return (
-    <View style={StylesHome.containerEtiquetas}>
-      <Text style={StylesHome.etiquetas}>Principal</Text>
-      <Text style={[StylesHome.etiquetas, { marginRight: 20 }]}>Registros</Text>
-      <Text style={[StylesHome.etiquetas, { marginRight: 15 }]}>Monitorar</Text>
-      <Text style={[StylesHome.etiquetas, { marginRight: 5 }]}>Calendário</Text>
-      <Text style={StylesHome.etiquetas}>Manual</Text>
+    <View style={StylesMenu.containerEtiquetas}>
+      <Text style={StylesMenu.etiquetas}>Principal</Text>
+      <Text style={[StylesMenu.etiquetas, { marginRight: 20 }]}>Registros</Text>
+      <Text style={[StylesMenu.etiquetas, { marginRight: 15 }]}>Monitorar</Text>
+      <Text style={[StylesMenu.etiquetas, { marginRight: 5 }]}>Calendário</Text>
+      <Text style={StylesMenu.etiquetas}>Manual</Text>
     </View>
   );
 };

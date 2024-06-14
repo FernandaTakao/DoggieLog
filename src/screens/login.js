@@ -9,9 +9,9 @@ import {
   Platform,
   KeyboardAvoidingView,
 } from "react-native";
-import StylesLogin from "../styles/stylesLogin";
+import StylesLoginSingups from "../styles/stylesLoginSingups";
 import { GetTutors } from "../database/tutorService"
-import Tutor from "../models/tutorModel";
+import Tutor from "../model/tutorModel";
 import { useNavigation } from "@react-navigation/native";
 
 const Login = () => {
@@ -23,27 +23,27 @@ const Login = () => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == "ios" ? "padding" : "height"}
-      style={StylesLogin.containerPrincipal}
+      style={StylesLoginSingups.containerPrincipal}
     >
-      <ScrollView contentContainerStyle={StylesLogin.scrollViewContent}>
-      <Text style={StylesLogin.title}>BEM-VINDO!</Text>
-      <Text style={StylesLogin.subtitle}>LOGIN</Text>
-      <View style={StylesLogin.containerFrente}>
+      <ScrollView contentContainerStyle={StylesLoginSingups.scrollViewContent}>
+      <Text style={StylesLoginSingups.title}>BEM-VINDO!</Text>
+      <Text style={StylesLoginSingups.subtitle}>LOGIN</Text>
+      <View style={StylesLoginSingups.containerFrente}>
         <Image
           source={require("../../assets/image/enfeite.png")}
-          style={StylesLogin.enfeite}
+          style={StylesLoginSingups.enfeite}
         />
         <Image
           source={require("../../assets/image/fotoLogin.png")}
-          style={StylesLogin.foto}
+          style={StylesLoginSingups.foto}
         />
-        <View style={StylesLogin.inputContainer}>
+        <View style={StylesLoginSingups.inputContainer}>
           <Image
             source={require("../../assets/image/email.png")}
-            style={StylesLogin.icons}
+            style={StylesLoginSingups.icons}
           />
           <TextInput
-            style={StylesLogin.txtInput}
+            style={StylesLoginSingups.txtInput}
             placeholder="E-mail"
             placeholderTextColor="#b6b6b6"
             underlineColorAndroid="transparent"
@@ -53,13 +53,13 @@ const Login = () => {
             onChangeText={setEmail}
           />
         </View>
-        <View style={StylesLogin.inputContainer}>
+        <View style={StylesLoginSingups.inputContainer}>
           <Image
             source={require("../../assets/image/senha.png")}
-            style={StylesLogin.icons}
+            style={StylesLoginSingups.icons}
           />
           <TextInput
-            style={StylesLogin.txtInput}
+            style={StylesLoginSingups.txtInput}
             placeholder="Senha"
             placeholderTextColor="#b6b6b6"
             placeholderFontFamily="RobotoRegular"
@@ -70,7 +70,7 @@ const Login = () => {
             secureTextEntry
           />
         </View>
-        <View style={StylesLogin.button}>
+        <View style={StylesLoginSingups.button}>
           <TouchableOpacity>
             <Text
               style={{
@@ -84,11 +84,11 @@ const Login = () => {
           </TouchableOpacity>
         </View>
         <View style={{ marginTop: 30 }}>
-          <Text style={StylesLogin.singupLink}>Não tem uma conta?</Text>
+          <Text style={StylesLoginSingups.singupLink}>Não tem uma conta?</Text>
           <TouchableOpacity onPress={navigation.navigate("singupTutor")}>
             <Text
               style={[
-                StylesLogin.singupLink,
+                StylesLoginSingups.singupLink,
                 { textDecorationLine: "underline" },
               ]}
             >
