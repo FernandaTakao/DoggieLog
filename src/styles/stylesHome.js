@@ -1,7 +1,4 @@
-
-//StylesHome
-
-import { StyleSheet} from "react-native";
+import { StyleSheet } from "react-native";
 
 const StylesHome = StyleSheet.create({
   containerPrincipal: {
@@ -26,7 +23,7 @@ const StylesHome = StyleSheet.create({
     paddingBottom: 10,
   },
   containerCimaCima: {
-    flex: 0.10,
+    flex: 0.1,
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "flex-start",
@@ -84,7 +81,7 @@ const StylesHome = StyleSheet.create({
   buttonsMenu: {
     width: 40,
     height: 35,
-    resizeMode: "contain"
+    resizeMode: "contain",
   },
   etiquetas: {
     fontFamily: "RobotoRegular",
@@ -98,7 +95,7 @@ const StylesHome = StyleSheet.create({
     flex: 0.56,
     backgroundColor: "white",
     width: "100%",
-    paddingTop: "8%"
+    paddingTop: "8%",
   },
   containerDropdown: {
     flexDirection: "column",
@@ -121,16 +118,10 @@ const StylesHome = StyleSheet.create({
   },
   toachableOEditarProfile: {
     width: "100",
-    height: '100',
+    height: "100",
     marginLeft: 10,
     marginBottom: 10,
     alignItems: "center",
-  },
-  /*Usou-se aqui um espaçador para posicionar corretamente o botão de ediçao de dados
-    Foi preferida essa forma à utilização do position "absolute" no containerCimaCima
-    por razões de responsividade */
-  espacador: {
-    opacity: 0,
   },
   txtHome: {
     fontFamily: "RobotoMedium",
@@ -147,11 +138,10 @@ const StylesHome = StyleSheet.create({
     paddingRight: "15%",
     paddingLeft: "17%",
   },
-  buttonMenu:{
-    backgroundColor: '#2A3F00',
+  buttonMenu: {
+    backgroundColor: "#2A3F00",
     width: 50,
     height: 15,
-    
     justifyContent: "center",
     alignItems: "center",
   },

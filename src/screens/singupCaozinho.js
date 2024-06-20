@@ -1,7 +1,3 @@
-
-
-// src/sreens/singupCaozinho
-
 import React, { useState } from "react";
 import {
   Text,
@@ -12,7 +8,6 @@ import {
   TouchableOpacity,
   Platform,
   KeyboardAvoidingView,
-  StyleSheet
 } from "react-native";
 import StylesLoginSingups from "../styles/stylesLoginSingups";
 import RNPickerSelect from "react-native-picker-select";
@@ -37,9 +32,9 @@ const SingupCaozinho = () => {
   const { createC } = Caozinho();
   const [errorMessage, setErrorMessage] = useState("");
 
-  
-  console.log(tutorData.user)
-  const userTutor = tutorData.user;
+  //console.log(tutorData.user)
+  //const userTutor = tutorData.user;
+
   const handleDateChange = (event, date) => {
     if (date !== undefined) {
       setSelectedDate(date);
@@ -52,7 +47,6 @@ const SingupCaozinho = () => {
     setShowDatePicker(true);
   };
 
-  // Estilo do Picker
   const pickerStyle = {
     inputIOS: [
       StylesLoginSingups.txtInput,
@@ -83,9 +77,9 @@ const SingupCaozinho = () => {
     { label: "Não", value: "n" },
   ];
 
-  // Função para Salvar o Caozinho
   const saveCaozinho = async () => {
-    try {
+    {
+      /*try {
       if (
         !nome.trim() ||
         !aniversario.trim() ||
@@ -128,7 +122,7 @@ const SingupCaozinho = () => {
       navigation.navigate("home");
     } catch (error) {
       console.log("Erro ao tentar criar o caozinho:", error.message);
-      setErrorMessage(error.message);
+      setErrorMessage(error.message); */
     }
   };
 
@@ -138,7 +132,9 @@ const SingupCaozinho = () => {
       style={[StylesLoginSingups.containerPrincipal]}
     >
       <ScrollView contentContainerStyle={StylesLoginSingups.scrollViewContent}>
-        <Text style={[StylesLoginSingups.title, { marginTop: 20 }]}>CADASTRE-SE!</Text>
+        <Text style={[StylesLoginSingups.title, { marginTop: 20 }]}>
+          CADASTRE-SE!
+        </Text>
         <Text style={StylesLoginSingups.subtitle}>CÃOZINHO</Text>
         <View style={[StylesLoginSingups.containerFrente, { flex: 0.95 }]}>
           <Image
@@ -154,13 +150,21 @@ const SingupCaozinho = () => {
             style={StylesLoginSingups.enviarFoto}
           />
           <Text style={[StylesLoginSingups.mensagem]}>Carregue uma foto</Text>
-          <View style={[StylesLoginSingups.inputContainer, StylesLoginSingups.inputCaozinho]}>
+          <View
+            style={[
+              StylesLoginSingups.inputContainer,
+              StylesLoginSingups.inputCaozinho,
+            ]}
+          >
             <Image
               source={require("../../assets/image/nome.png")}
               style={[StylesLoginSingups.icons, { marginLeft: -60 }]}
             />
             <TextInput
-              style={[StylesLoginSingups.txtInput, StylesLoginSingups.txtCaozinho]}
+              style={[
+                StylesLoginSingups.txtInput,
+                StylesLoginSingups.txtCaozinho,
+              ]}
               placeholder="Nome"
               placeholderTextColor="#b6b6b6"
               underlineColorAndroid="transparent"
@@ -169,7 +173,12 @@ const SingupCaozinho = () => {
             />
           </View>
 
-          <View style={[StylesLoginSingups.inputContainer, StylesLoginSingups.inputCaozinho]}>
+          <View
+            style={[
+              StylesLoginSingups.inputContainer,
+              StylesLoginSingups.inputCaozinho,
+            ]}
+          >
             <Image
               source={require("../../assets/image/nascimento.png")}
               style={[StylesLoginSingups.icons, { marginLeft: -60 }]}
@@ -200,12 +209,17 @@ const SingupCaozinho = () => {
                   mode="date"
                   display="spinner"
                   onChange={handleDateChange}
-                  style={{ backgroundColor: 'white' }} // Estilo do DateTimePicker
+                  style={{ backgroundColor: "white" }} // Estilo do DateTimePicker
                 />
               )}
             </View>
           </View>
-          <View style={[StylesLoginSingups.inputContainer, StylesLoginSingups.inputCaozinho]}>
+          <View
+            style={[
+              StylesLoginSingups.inputContainer,
+              StylesLoginSingups.inputCaozinho,
+            ]}
+          >
             <Image
               source={require("../../assets/image/sexo.png")}
               style={[StylesLoginSingups.icons, { marginLeft: -57 }]}
@@ -230,13 +244,21 @@ const SingupCaozinho = () => {
             </View>
           </View>
 
-          <View style={[StylesLoginSingups.inputContainer, StylesLoginSingups.inputCaozinho]}>
+          <View
+            style={[
+              StylesLoginSingups.inputContainer,
+              StylesLoginSingups.inputCaozinho,
+            ]}
+          >
             <Image
               source={require("../../assets/image/peso.png")}
               style={[StylesLoginSingups.icons, { marginLeft: -60 }]}
             />
             <TextInput
-              style={[StylesLoginSingups.txtInput, StylesLoginSingups.txtCaozinho]}
+              style={[
+                StylesLoginSingups.txtInput,
+                StylesLoginSingups.txtCaozinho,
+              ]}
               placeholder="Peso"
               placeholderTextColor="#b6b6b6"
               underlineColorAndroid="transparent"
@@ -244,7 +266,12 @@ const SingupCaozinho = () => {
               onChangeText={setPeso}
             />
           </View>
-          <View style={[StylesLoginSingups.inputContainer, StylesLoginSingups.inputCaozinho]}>
+          <View
+            style={[
+              StylesLoginSingups.inputContainer,
+              StylesLoginSingups.inputCaozinho,
+            ]}
+          >
             <Image
               source={require("../../assets/image/porte.png")}
               style={[StylesLoginSingups.icons, { marginLeft: -60 }]}
@@ -268,13 +295,21 @@ const SingupCaozinho = () => {
               />
             </View>
           </View>
-          <View style={[StylesLoginSingups.inputContainer, StylesLoginSingups.inputCaozinho]}>
+          <View
+            style={[
+              StylesLoginSingups.inputContainer,
+              StylesLoginSingups.inputCaozinho,
+            ]}
+          >
             <Image
               source={require("../../assets/image/raca.png")}
               style={[StylesLoginSingups.icons, { marginLeft: -60 }]}
             />
             <TextInput
-              style={[StylesLoginSingups.txtInput, StylesLoginSingups.txtCaozinho]}
+              style={[
+                StylesLoginSingups.txtInput,
+                StylesLoginSingups.txtCaozinho,
+              ]}
               placeholder="Raça"
               placeholderTextColor="#b6b6b6"
               underlineColorAndroid="transparent"
@@ -282,10 +317,18 @@ const SingupCaozinho = () => {
               onChangeText={setRaca}
             />
           </View>
-          <View style={[StylesLoginSingups.inputContainer, StylesLoginSingups.inputCaozinho]}>
+          <View
+            style={[
+              StylesLoginSingups.inputContainer,
+              StylesLoginSingups.inputCaozinho,
+            ]}
+          >
             <Image
               source={require("../../assets/image/castrado.png")}
-              style={[StylesLoginSingups.icons, { marginLeft: -60, opacity: 0.65 }]}
+              style={[
+                StylesLoginSingups.icons,
+                { marginLeft: -60, opacity: 0.65 },
+              ]}
             />
             <View
               style={{
@@ -311,9 +354,20 @@ const SingupCaozinho = () => {
           {errorMessage ? (
             <Text style={StylesLoginSingups.error}>{errorMessage}</Text>
           ) : null}
-          <View style={[StylesLoginSingups.button, StylesLoginSingups.buttonCaozinho]}>
+          <View
+            style={[
+              StylesLoginSingups.button,
+              StylesLoginSingups.buttonCaozinho,
+            ]}
+          >
             <TouchableOpacity onPress={saveCaozinho}>
-              <Text style={{ fontFamily: "NunitoSemiBold", fontSize: 23, color: "#FFFACD" }}>
+              <Text
+                style={{
+                  fontFamily: "NunitoSemiBold",
+                  fontSize: 23,
+                  color: "#FFFACD",
+                }}
+              >
                 ENVIAR
               </Text>
             </TouchableOpacity>
@@ -323,14 +377,5 @@ const SingupCaozinho = () => {
     </KeyboardAvoidingView>
   );
 };
-
-const styles = StyleSheet.create({
-  datePicker: {
-    backgroundColor: 'white',
-  },
-  datePickerContainer: {
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
-});
 
 export default SingupCaozinho;

@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import StylesHome from "../styles/stylesHome";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import MenuPrincipalIcones from "../components/menuPrincipal";
 import { MenuPrincipalRotulos } from "../components/menuPrincipal";
 import RNPickerSelect from "react-native-picker-select";
 import StylesMenu from "../styles/stylesMenu";
+import {
+  widthPercentageToDP,
+  heightPercentageToDP,
+} from "react-native-responsive-screen";
 
 const Home = () => {
   const [relatorio, setRelatorio] = useState("");
@@ -16,14 +20,17 @@ const Home = () => {
     navigation.navigate("editProfile");
   };
   const navigateL = () => {
-    navigation.navigate("login.");
+    navigation.navigate("login");
   };
   const navigateCT = () => {
     navigation.navigate("singupTutor");
   };
   const navigateCC = () => {
     navigation.navigate("singupCaozinho");
-  }
+  };
+  const navigateN = () => {
+    navigation.navigate("note");
+  };
 
   const pickerStyle = {
     inputIOS: [
@@ -59,7 +66,7 @@ const Home = () => {
           </TouchableOpacity>
         </View>
         <View style={StylesHome.containerMeio}>
-          {/*AQUI, FAZER O USUÁRIO ESCOLHER A FOTO */}
+          {/*AQUI, EXIBIR A FOTO ARMAZENADA NO BANCO DE DADOS */}
           <Image
             source={require("../../assets/image/carregarFoto.png")}
             style={StylesHome.fotoHome}
@@ -89,21 +96,33 @@ const Home = () => {
             placeholderTextColor="#ffffff"
             underlineColorAndroid="transparent"
             items={relatorios}
-            onValueChange={(value) => setRelatorio(value)} 
+            onValueChange={(value) => setRelatorio(value)}
             value={relatorio}
           />
         </View>
-        <TouchableOpacity onPress={navigateCT}>
-          <Text style={{fontSize: 20}}>CADASTRO TUTOR</Text>
+        <TouchableOpacity
+          style={[styles.buttons, { backgroundColor: "#E4FFF2" }]}
+          onPress={navigateCT}
+        >
+          <Text style={styles.txt}>Cadastro Tutor</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={navigateCT}>
-          <Text style={{fontSize: 20}}>CADASTRO TUTOR</Text>
+        <TouchableOpacity
+          style={[styles.buttons, { backgroundColor: "#FF9385" }]}
+          onPress={navigateCC}
+        >
+          <Text style={styles.txt}>Cadastro Cãozinho</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={navigateCC}>
-          <Text style={{fontSize: 20}}>CADASTRO CAOZINHO</Text>
+        <TouchableOpacity
+          style={[styles.buttons, { backgroundColor: "#E2FFA4" }]}
+          onPress={navigateL}
+        >
+          <Text style={styles.txt}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={navigateL}>
-          <Text style={{fontSize: 20}}>LOGIN</Text>
+        <TouchableOpacity
+          style={[styles.buttons, { backgroundColor: "#F2D6FF" }]}
+          onPress={navigateN}
+        >
+          <Text style={styles.txt}>Notas</Text>
         </TouchableOpacity>
       </View>
       <MenuPrincipalIcones style={StylesMenu.containerMenu} />
@@ -113,3 +132,21 @@ const Home = () => {
 };
 
 export default Home;
+
+const styles = StyleSheet.create({
+  buttons: {
+    width: widthPercentageToDP("70%"),
+    height: heightPercentageToDP("6%"),
+    marginTop: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 3,
+    borderRadius: 30,
+  },
+  txt: {
+    fontFamily: "NunitoSemiBold",
+    fontSize: 20,
+    color: "black",
+    textAlign: "center",
+  },
+});

@@ -1,7 +1,3 @@
-
-
-// src/components/registerContext.js
-
 import React, { createContext, useState, useContext } from "react";
 
 const RegisterContext = createContext();

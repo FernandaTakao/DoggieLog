@@ -1,12 +1,13 @@
-// src/database/tutorService.js
-
-import * as SQLite from "expo-sqlite";
 import { useSQLiteContext } from "expo-sqlite";
 
 export function TutorService() {
   const database = useSQLiteContext();
 
   async function createTutor(user, senha) {
+    await database.execAsync(
+      "CREATE TABLE IF NOT EXISTS Tutor (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT, senha TEXT);"
+    );
+
     const statement = await database.prepareAsync(
       "INSERT INTO Tutor (user, senha) VALUES ($user, $senha);"
     );
@@ -19,8 +20,13 @@ export function TutorService() {
 
       console.log("Insertion result:", result);
 
-      const insertedRowId = result.lastInsertRowId.toString();
-      return { insertedRowId };
+      if (result.insertId) {
+        const insertedRowId = result.insertId.toString();
+        return { insertedRowId };
+      } else {
+        console.error("No insertId found in the result", result);
+        throw new Error("No insertId found in the result");
+      }
     } catch (error) {
       console.error("Error inserting data:", error);
       throw error;

@@ -1,5 +1,3 @@
-// Calendar.js
-
 import React, { useState, useEffect } from "react";
 import { Text, View, Alert } from "react-native";
 import { CalendarList } from "react-native-calendars";
@@ -7,6 +5,8 @@ import StylesCalendar from "../styles/stylesCalendar";
 import MenuPrincipalIcones, { MenuPrincipalRotulos } from "../components/menuPrincipal";
 import StylesMenu from "../styles/stylesMenu";
 import { useNavigation } from "@react-navigation/native";
+import DiaService from "../database/diaService";
+import moment from 'moment-timezone';
 
 const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState("");
@@ -14,18 +14,38 @@ const Calendar = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
+    const unsubscribe = navigation.addListener("focus", () => {
       setSelectedDate("");
+      fetchNotes();
     });
     return unsubscribe;
   }, [navigation]);
 
-  const handleDayPress = (day) => {
-    const selectedDay = new Date(day.dateString);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);  // remove time component for comparison
+  const fetchNotes = async () => {
+    const { readAllDias } = DiaService();
+    const dias = await readAllDias();
+    const formattedNotes = dias.reduce((acc, dia) => {
+      acc[dia.date] = {
+        dots: [
+          dia.agua && { color: "#97FFF1" },
+          dia.comida && { color: "#F1920E" },
+          dia.sono && { color: "#340070" },
+          dia.humor && { color: "#901000" },
+          dia.atividadeFisica && { color: "#3E5E00" },
+          dia.xixi && { color: "#FFE500" },
+          dia.coco && { color: "#714000" },
+        ].filter(Boolean),
+      };
+      return acc;
+    }, {});
+    setNotes(formattedNotes);
+  };
 
-    if (selectedDay > today) {
+  const handleDayPress = (day) => {
+    const selectedDay = moment(day.dateString).startOf('day');
+    const today = moment().tz("America/Sao_Paulo").startOf('day');
+
+    if (selectedDay.isAfter(today)) {
       Alert.alert("Erro", "Não é possível monitorar dias futuros.");
       return;
     }
@@ -34,17 +54,27 @@ const Calendar = () => {
     navigation.navigate("monitoring", { date: day.dateString });
   };
 
-  const today = new Date().toISOString().split('T')[0];
+  const today = moment().tz("America/Sao_Paulo").format("YYYY-MM-DD");
 
   const markedDates = {
     ...Object.keys(notes).reduce((acc, date) => {
-      acc[date] = { 
-        marked: true, 
-        dots: notes[date].map(note => ({ color: note.color }))
+      acc[date] = {
+        marked: true,
+        dots: notes[date].dots,
       };
       return acc;
     }, {}),
-    [today]: { selected: true, selectedColor: "white", selectedTextColor: "#FF8E72", customStyles: { text: { fontWeight: 'bold' } } }
+    [today]: {
+      customStyles: {
+        container: {
+          backgroundColor: 'white',
+        },
+        text: {
+          color: '#FF8E72',
+          fontWeight: 'bold',
+        },
+      },
+    },
   };
 
   return (
@@ -57,26 +87,26 @@ const Calendar = () => {
       <View style={StylesCalendar.calendario}>
         <CalendarList
           onDayPress={handleDayPress}
-          markingType={'multi-dot'}
+          markingType={"custom"}
           markedDates={markedDates}
           theme={{
-            'stylesheet.day.basic': {
+            todayTextColor: '#FF8E72',
+            textDayFontWeight: 'bold',
+            textDayFontSize: 16,
+            "stylesheet.day.basic": {
               base: {
                 width: 32,
                 height: 32,
-                alignItems: 'center',
-                justifyContent: 'center',
+                alignItems: "center",
+                justifyContent: "center",
               },
-              today: {
-                backgroundColor: 'white',
-                color: '#FF8E72',
-                fontWeight: 'bold',
+              text: {
+                color: "#2d4150",
+                fontWeight: "normal",
+                fontSize: 14,
+                backgroundColor: "rgba(255, 255, 255, 0)",
+                textAlign: "center",
               },
-              text: ({ dateString }) => ({
-                color: 'black',
-                fontWeight: dateString === today ? 'bold' : 'normal',
-                opacity: new Date(dateString) > new Date() ? 0.5 : 1,
-              }),
             },
           }}
         />

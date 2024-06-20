@@ -1,14 +1,9 @@
-// src/database/caozinhoService.js
-
-import * as SQLite from "expo-sqlite";
-import { useEffect, useState } from "react";
 import { useSQLiteContext } from "expo-sqlite";
 
 export function DiaService() {
   const database = useSQLiteContext();
 
   async function createDia(
-    nome,
     agua,
     comida,
     xixi,
@@ -19,7 +14,7 @@ export function DiaService() {
     idCaozinho
   ) {
     const statement = await database.prepareAsync(
-      "INSERT INTO Caozinho (agua, comida, xixi, coco, sono, humor,atividadeFisica, idCaozinho) VALUES ($comida, $agua, $xixi, $coco, $sono, $humor, $atividadeFisica, $idCaoozinho);"
+      "INSERT INTO Caozinho (agua, comida, xixi, coco, sono, humor, atividadeFisica, idCaozinho) VALUES ($comida, $agua, $xixi, $coco, $sono, $humor, $atividadeFisica, $idCaoozinho);"
     );
 
     try {
@@ -46,12 +41,15 @@ export function DiaService() {
   }
 
   async function readDia(id) {
-    if (!database) return;
-
     const dia = await database.getAllAsync("SELECT * FROM Dia WHERE id = ?", [
       id,
     ]);
     return dia;
+  }
+
+  async function readAllDias() {
+    const dias = await database.getAllAsync("SELECT * FROM Dia");
+    return dias;
   }
 
   async function updateDia(
@@ -64,8 +62,6 @@ export function DiaService() {
     newAtividadeFisica,
     id
   ) {
-    if (!database) return;
-
     await database.runAsync(
       "UPDATE Dia SET comida = ?, agua = ?, xixi =?, coco = ?, sono = ?, humor = ?, atividadeFisica = ? WHERE id = ?",
       [
@@ -83,8 +79,6 @@ export function DiaService() {
   }
 
   async function deleteDia(id) {
-    if (!database) return;
-
     await database.runAsync("DELETE FROM Dia WHERE id = ?", [id]);
     return { success: true };
   }
@@ -92,6 +86,7 @@ export function DiaService() {
   return {
     createDia,
     readDia,
+    readAllDias,
     updateDia,
     deleteDia,
   };

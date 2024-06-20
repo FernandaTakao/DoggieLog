@@ -1,4 +1,4 @@
-import StylesMenu from '../styles/stylesMenu'
+import StylesMenu from "../styles/stylesMenu";
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -25,43 +25,40 @@ const MenuPrincipalIcones = () => {
   const navigateG = () => {
     navigation.navigate("guide");
   };
-  const navigateN = () =>{
-    navigation.navigate("note")
-  }
 
   return (
-      <View style={StylesMenu.containerMenu}>
-        <TouchableOpacity onPress={navigateH}>
-          <Image
-            style={StylesMenu.buttonsMenu}
-            source={require("../../assets/image/principal.png")}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={navigateL}>
-          <Image
-            style={StylesMenu.buttonsMenu}
-            source={require("../../assets/image/registros.png")}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={navigateM}>
-          <Image
-            style={{ width: 74, height: 74 }}
-            source={require("../../assets/image/monitorar.png")}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={navigateC}>
-          <Image
-            style={StylesMenu.buttonsMenu}
-            source={require("../../assets/image/calendario.png")}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={navigateG}>
-          <Image
-            style={StylesMenu.buttonsMenu}
-            source={require("../../assets/image/manual.png")}
-          />
-        </TouchableOpacity>
-      </View>
+    <View style={StylesMenu.containerMenu}>
+      <TouchableOpacity onPress={navigateH}>
+        <Image
+          style={StylesMenu.buttonsMenu}
+          source={require("../../assets/image/principal.png")}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={navigateL}>
+        <Image
+          style={StylesMenu.buttonsMenu}
+          source={require("../../assets/image/registros.png")}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={navigateM}>
+        <Image
+          style={{ width: 74, height: 74 }}
+          source={require("../../assets/image/monitorar.png")}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={navigateC}>
+        <Image
+          style={StylesMenu.buttonsMenu}
+          source={require("../../assets/image/calendario.png")}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={navigateG}>
+        <Image
+          style={StylesMenu.buttonsMenu}
+          source={require("../../assets/image/manual.png")}
+        />
+      </TouchableOpacity>
+    </View>
   );
 };
 

@@ -1,9 +1,5 @@
-// stylesMonitoring.js
 import { StyleSheet } from "react-native";
-import {
-  widthPercentageToDP,
-  heightPercentageToDP,
-} from "react-native-responsive-screen";
+import { heightPercentageToDP } from "react-native-responsive-screen";
 
 const StylesMonitoring = StyleSheet.create({
   containerFundo: {
@@ -36,12 +32,14 @@ const StylesMonitoring = StyleSheet.create({
     fontSize: 18,
     fontFamily: "NunitoSemiBold",
     textAlign: "center",
-    marginTop: 10,
+    marginTop: 50,
+    marginBottom: 10,
   },
   scrollviewContainer: {
     paddingVertical: 10,
     flexGrow: 1,
     width: "100%",
+    height: "100%",
   },
   images: {
     width: 104,
@@ -49,6 +47,7 @@ const StylesMonitoring = StyleSheet.create({
     resizeMode: "contain",
     marginRight: 40,
     marginLeft: 2.5,
+    marginBottom: 15,
   },
   day: {
     fontFamily: "NunitoBold",

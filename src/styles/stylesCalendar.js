@@ -1,4 +1,3 @@
-// stylesCalendar.js
 import { StyleSheet } from "react-native";
 
 const StylesCalendar = StyleSheet.create({

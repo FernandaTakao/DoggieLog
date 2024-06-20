@@ -1,5 +1,3 @@
-// stylesNote.js
-
 import { StyleSheet } from "react-native";
 import {
   widthPercentageToDP,
@@ -7,6 +5,7 @@ import {
 } from "react-native-responsive-screen";
 
 const StylesNote = StyleSheet.create({
+  
   // para a representação gráfica das notas na página do bloco de notas
   containerPrincipal: {
     flexDirection: "column",
@@ -80,17 +79,15 @@ const StylesNote = StyleSheet.create({
     paddingVertical: 8,
     fontFamily: "RobotoRegular",
     textAlign: "justify",
-    fontSize: 16
+    fontSize: 16,
   },
   texto: {
-    //padding
     fontFamily: "RobotoRegular",
     textAlign: "justify",
     fontSize: 18,
     marginHorizontal: 15,
     marginTop: 10,
     marginBottom: -80,
-    //flex: 1,
   },
   icons: {
     width: 24,

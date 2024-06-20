@@ -1,7 +1,3 @@
-
-
-// src/model/caozinhoModel.js
-
 import CaozinhoService from "../database/caozinhoService";
 
 const Caozinho = () => {
@@ -15,7 +11,7 @@ const Caozinho = () => {
     porte,
     raca,
     statusReprodutivo,
-    userTutor,
+    userTutor
   ) => {
     await createCaozinho(
       nome,

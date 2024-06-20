@@ -1,15 +1,9 @@
-
-
-// src/database/caozinhoService.js
-
-import * as SQLite from "expo-sqlite";
-import { useEffect, useState } from "react";
 import { useSQLiteContext } from "expo-sqlite";
 
 export function CaozinhoService() {
   const database = useSQLiteContext();
 
- {/*async function createCaozinho(
+  async function createCaozinho(
     nome,
     dataNascimento,
     sexo,
@@ -19,27 +13,9 @@ export function CaozinhoService() {
     statusReprodutivo,
     userTutor
   ) {
-    if (!database) return;
-
-    const result = await database.runAsync(
-      "INSERT INTO Caozinho (nome, dataNascimento, sexo, peso, porte, raca, statusReprodutivo, userTutor) VALUES (?, ?, ?, ?, ?, ?,?, ?)",
-      [nome, dataNascimento, sexo, peso, porte, raca, statusReprodutivo, userTutor]
-    );
-    
-    return { insertedRowId: result.lastInsertRowId };
-  }
-*/ } 
-  async function createCaozinho(nome,
-    dataNascimento,
-    sexo,
-    peso,
-    porte,
-    raca,
-    statusReprodutivo,
-    userTutor) {
     const statement = await database.prepareAsync(
       "INSERT INTO Caozinho (nome, dataNascimento, sexo, peso, porte, raca, statusReprodutivo, userTutor) VALUES ($nome, $dataNascimento, $sexo, $peso, $porte, $raca, $statusReprodutivo, $userTutor);"
-    )
+    );
 
     try {
       const result = await statement.executeAsync({
@@ -50,17 +26,17 @@ export function CaozinhoService() {
         $porte: porte,
         $raca: raca,
         $statusReprodutivo: statusReprodutivo,
-        $userTutor: userTutor
-      })
+        $userTutor: userTutor,
+      });
 
-      const insertedRowId = result.lastInsertRowId.toLocaleString()
+      const insertedRowId = result.lastInsertRowId.toLocaleString();
 
-      return { insertedRowId }
+      return { insertedRowId };
     } catch (error) {
-      console.error('Error inserting data:', error);
-      throw error
+      console.error("Error inserting data:", error);
+      throw error;
     } finally {
-      await statement.finalizeAsync()
+      await statement.finalizeAsync();
     }
   }
 

@@ -1,7 +1,6 @@
 import React from "react";
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, Text, View } from "react-native";
 import StylesGuide from "../styles/stylesGuide";
-import StylesMenu from "../styles/stylesMenu";
 import MenuPrincipalIcones, {
   MenuPrincipalRotulos,
 } from "../components/menuPrincipal";

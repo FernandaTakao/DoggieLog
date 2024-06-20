@@ -1,5 +1,7 @@
+// App.js
+
 import "react-native-gesture-handler";
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { ActivityIndicator, View } from "react-native";
@@ -18,10 +20,13 @@ import SingupTutor from "./src/screens/singupTutor";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SQLiteProvider } from "expo-sqlite";
 import { RegisterProvider } from "./src/components/registerContext";
+import { AuthProvider, useAuth } from "./src/components/authContext";
+import InitDB from "./src/database/initDB";
 
 const Stack = createNativeStackNavigator();
 
-function DefineApp() {
+const AppNavigator = () => {
+  const { user } = useAuth();
   const [loaded] = useFonts({
     RobotoRegular: require("./assets/fonts/Roboto-Regular.ttf"),
     RobotoMedium: require("./assets/fonts/Roboto-Medium.ttf"),
@@ -41,74 +46,76 @@ function DefineApp() {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="home">
-          <Stack.Screen
-            name="login"
-            component={Login}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="singupTutor"
-            component={SingupTutor}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="singupCaozinho"
-            component={SingupCaozinho}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="home"
-            component={Home}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="editProfile"
-            component={EditProfile}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="logs"
-            component={Logs}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="monitoring"
-            component={Monitoring}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="note"
-            component={Note}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="calendar"
-            component={Calendar}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="guide"
-            component={Guide}
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="home">
+        <Stack.Screen
+          name="login"
+          component={Login}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="home"
+          component={Home}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="editProfile"
+          component={EditProfile}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="logs"
+          component={Logs}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="monitoring"
+          component={Monitoring}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="note"
+          component={Note}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="calendar"
+          component={Calendar}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="guide"
+          component={Guide}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="singupTutor"
+          component={SingupTutor}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="singupCaozinho"
+          component={SingupCaozinho}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
 const App = () => {
   return (
-    <RegisterProvider>
-      <Suspense>
-        <SQLiteProvider databaseName="doggielog.db" onInit={InitBD}>
-          <DefineApp />
-        </SQLiteProvider>
-      </Suspense>
-    </RegisterProvider>
+    <AuthProvider>
+      <RegisterProvider>
+        <Suspense>
+          <SQLiteProvider databaseName="doggielog.db" onInit={InitDB}>
+            <SafeAreaView style={{ flex: 1 }}>
+              <AppNavigator />
+            </SafeAreaView>
+          </SQLiteProvider>
+        </Suspense>
+      </RegisterProvider>
+    </AuthProvider>
   );
 };
 

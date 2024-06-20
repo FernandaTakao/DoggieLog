@@ -1,6 +1,3 @@
-
-
-
 import { StyleSheet } from "react-native";
 
 const StylesMenu = StyleSheet.create({
@@ -30,7 +27,7 @@ const StylesMenu = StyleSheet.create({
   buttonsMenu: {
     width: 40,
     height: 35,
-    resizeMode: "contain"
+    resizeMode: "contain",
   },
   etiquetas: {
     fontFamily: "NunitoRegular",

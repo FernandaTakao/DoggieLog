@@ -1,5 +1,3 @@
-// Monitoring.js
-
 import React, { useState } from "react";
 import { Image, ScrollView, Text, View, TouchableOpacity } from "react-native";
 import StylesMonitoring from "../styles/stylesMonitoring";
@@ -14,14 +12,12 @@ const Monitoring = () => {
   const route = useRoute();
   const { date } = route.params || { date: moment().format("YYYY-MM-DD") };
 
-  // Garantir que a data está no formato brasileiro
   const formattedDate = moment(date).locale("pt-br").format("DD/MM/YYYY");
 
   const navigate = () => {
     navigation.navigate("calendar");
   };
 
-  // Estados para armazenar as seleções de cada categoria
   const [selectedFood, setSelectedFood] = useState(null);
   const [selectedWater, setSelectedWater] = useState(null);
   const [selectedMood, setSelectedMood] = useState(null);
@@ -32,35 +28,37 @@ const Monitoring = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const { createDia } = DiaService();
+
   const handleMonitoring = (category, value) => {
     switch (category) {
       case "food":
-        setSelectedFood(value);
+        setSelectedFood((prev) => (prev === value ? null : value));
         break;
       case "water":
-        setSelectedWater(value);
+        setSelectedWater((prev) => (prev === value ? null : value));
         break;
       case "mood":
-        setSelectedMood(value);
+        setSelectedMood((prev) => (prev === value ? null : value));
         break;
       case "sleep":
-        setSelectedSleep(value);
+        setSelectedSleep((prev) => (prev === value ? null : value));
         break;
       case "activity":
-        setSelectedActivity(value);
+        setSelectedActivity((prev) => (prev === value ? null : value));
         break;
       case "pee":
-        setSelectedPee(value);
+        setSelectedPee((prev) => (prev === value ? null : value));
         break;
       case "poop":
-        setSelectedPoop(value);
+        setSelectedPoop((prev) => (prev === value ? null : value));
         break;
     }
   };
 
   const handleSave = async () => {
+    {
+      /** 
     try {
-      console.log("Antes de chamar create no dia");
       await createDia(
         selectedFood,
         selectedWater,
@@ -70,30 +68,30 @@ const Monitoring = () => {
         selectedPee,
         selectedPoop
       );
-      console.log("Depois de chamar create no dia");
-
       setErrorMessage("");
       navigation.navigate("calendar");
     } catch (error) {
-      console.log("Erro ao tentar criar o dia", error.message);
       setErrorMessage(error.message);
+    }*/
     }
   };
 
   return (
     <View style={StylesMonitoring.containerFundo}>
       <View style={StylesMonitoring.containerHeader}>
-        <TouchableOpacity onPress={handleSave}>
-          <Text style={[StylesNote.voltar, {fontSize: 14}]}>⨉</Text>
+        <TouchableOpacity onPress={navigate}>
+          <Text style={[StylesNote.voltar, { fontSize: 14 }]}>⨉</Text>
         </TouchableOpacity>
         <Text style={StylesMonitoring.day}>{formattedDate}</Text>
         <Image
           source={require("../../assets/image/eliminar.png")}
-          style={[StylesNote.icons, {marginRight: 20}]}
+          style={[StylesNote.icons, { marginRight: 20 }]}
         />
       </View>
       <ScrollView style={StylesMonitoring.scrollviewContainer}>
-        <Text style={[StylesMonitoring.titles, { color: "#007A7D" }]}>
+        <Text
+          style={[StylesMonitoring.titles, { color: "#007A7D", marginTop: 5 }]}
+        >
           Água
         </Text>
         <View style={StylesMonitoring.subcontainers}>
@@ -134,7 +132,6 @@ const Monitoring = () => {
             />
           </TouchableOpacity>
         </View>
-        <View style={[StylesMonitoring.containerEtiquetas]}></View>
         <Text style={[StylesMonitoring.titles, { color: "#754B00" }]}>
           Comida
         </Text>
@@ -176,7 +173,6 @@ const Monitoring = () => {
             />
           </TouchableOpacity>
         </View>
-        <View style={[StylesMonitoring.containerEtiquetas]}></View>
         <Text style={[StylesMonitoring.titles, { color: "#340070" }]}>
           Sono
         </Text>
@@ -218,7 +214,6 @@ const Monitoring = () => {
             />
           </TouchableOpacity>
         </View>
-        <View style={[StylesMonitoring.containerEtiquetas]}></View>
         <Text style={[StylesMonitoring.titles, { color: "#901000" }]}>
           Humor
         </Text>
@@ -260,7 +255,6 @@ const Monitoring = () => {
             />
           </TouchableOpacity>
         </View>
-        <View style={[StylesMonitoring.containerEtiquetas]}></View>
         <Text style={[StylesMonitoring.titles, { color: "#3E5E00" }]}>
           Atividade Física
         </Text>
@@ -302,7 +296,6 @@ const Monitoring = () => {
             />
           </TouchableOpacity>
         </View>
-        <View style={[StylesMonitoring.containerEtiquetas]}></View>
         <Text style={[StylesMonitoring.titles, { color: "#726D48" }]}>
           Xixi
         </Text>
@@ -344,7 +337,6 @@ const Monitoring = () => {
             />
           </TouchableOpacity>
         </View>
-        <View style={[StylesMonitoring.containerEtiquetas]}></View>
         <Text style={[StylesMonitoring.titles, { color: "#714000" }]}>
           Cocô
         </Text>
@@ -386,7 +378,9 @@ const Monitoring = () => {
             />
           </TouchableOpacity>
         </View>
-        <View style={[StylesMonitoring.containerEtiquetas]}></View>
+        <Text style={[StylesMonitoring.titles, { opacity: 0, fontSize: 5 }]}>
+          Este texto tem a função de de criar uma margem inferior na tela
+        </Text>
       </ScrollView>
     </View>
   );

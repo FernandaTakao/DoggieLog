@@ -1,7 +1,3 @@
-
-
-// src/model/tutorModel.js
-
 import TutorService from "../database/tutorService";
 
 const Tutor = () => {

@@ -1,37 +1,36 @@
-// src/model/caozinhoModel.js
+import DiaService from "../database/diaService";
 
-import CaozinhoService from "../database/caozinhoService";
+const Dia = () => {
+  const { createDia } = DiaService();
 
-const Caozinho = () => {
-  const { createCaozinho } = CaozinhoService();
-
-  const createC = async (
-    nome,
-    dataNascimento,
-    sexo,
-    peso,
-    porte,
-    raca,
-    statusReprodutivo,
-    userTutor,
+  const createD = async (
+    agua,
+    comida,
+    xixi,
+    coco,
+    sono,
+    humor,
+    atividadeFisica,
+    idCaozinho
   ) => {
-    await createCaozinho(
-      nome,
-      dataNascimento,
-      sexo,
-      peso,
-      porte,
-      raca,
-      statusReprodutivo,
-      userTutor
+    console.log("Entrou em createD");
+    await createDia(
+      agua,
+      comida,
+      xixi,
+      coco,
+      sono,
+      humor,
+      atividadeFisica,
+      idCaozinho
     );
   };
 
-  const removeC = async (id) => {
-    await CaozinhoService.deleteCaozinho(id);
+  const removeD = async (id) => {
+    await DiaService.deleteCaozinho(id);
   };
 
-  return { createC, removeC };
+  return { createD, removeD };
 };
 
-export default Caozinho;
+export default Dia;

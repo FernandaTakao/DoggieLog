@@ -1,14 +1,12 @@
-
-
-import React from 'react';
-import { View, TextInput, Image } from 'react-native';
-import StylesSearchBar from '../styles/stylesSearchBar';
+import React from "react";
+import { View, TextInput, Image } from "react-native";
+import StylesSearchBar from "../styles/stylesSearchBar";
 
 const SearchBar = ({ searchQuery, setSearchQuery }) => {
   return (
     <View style={StylesSearchBar.container}>
-      <Image 
-        source={require('../../assets/image/buscar.png')}
+      <Image
+        source={require("../../assets/image/buscar.png")}
         style={StylesSearchBar.icon}
       />
       <TextInput
@@ -16,24 +14,23 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
         placeholder="Pesquisar nos registros"
         value={searchQuery}
         placeholderTextColor="#A8A8A8"
-        placeholderTextSize= "14"
+        placeholderTextSize="14"
         underlineColorAndroid="transparent"
         onChangeText={setSearchQuery}
-
         theme={{
-            colors: {
-              placeholder: '#A8A8A8', 
-              placeholderTextSize: 14,
-              text: '#000000', 
-              underlineColor: 'transparent',
-              background: '#ffffff' 
+          colors: {
+            placeholder: "#A8A8A8",
+            placeholderTextSize: 14,
+            text: "#000000",
+            underlineColor: "transparent",
+            background: "#ffffff",
+          },
+          fonts: {
+            regular: {
+              fontFamily: "RobotoRegular",
             },
-            fonts: {
-              regular: {
-                fontFamily: 'RobotoRegular', 
-              },
-            },
-          }}
+          },
+        }}
       />
     </View>
   );

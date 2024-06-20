@@ -21,8 +21,6 @@ const StylesGuide = StyleSheet.create({
     flex: 0.84,
     flexDirection: "column",
     alignItems: "center",
-    //paddingTop: 30,
-    //paddingHorizontal: 20,
     width: "100%",
     backgroundColor: "white",
   },
@@ -52,11 +50,8 @@ const StylesGuide = StyleSheet.create({
     resizeMode: "contain",
     width: 800,
     height: 800,
-    // transform: [{ rotate: "35deg" }],
     position: "absolute",
     marginBottom: 100,
-    // marginTop: "-10%",
-    // marginLeft: "-40%",
   },
 });
 

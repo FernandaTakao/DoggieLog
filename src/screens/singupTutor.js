@@ -1,7 +1,3 @@
-
-
-// src/screens/singupTutor.js
-
 import React, { useState } from "react";
 import {
   Text,
@@ -33,7 +29,9 @@ const SingupTutor = () => {
         throw new Error("Por favor, preencha todos os campos.");
       }
       if (user.length < 8 || password.length < 8) {
-        throw new Error("A senha e o nome de usuário devem ter no mínimo 8 caracteres!");
+        throw new Error(
+          "A senha e o nome de usuário devem ter no mínimo 8 caracteres!"
+        );
       }
       if (password !== passwordConfirm) {
         throw new Error("As senhas não coincidem!");
@@ -121,8 +119,17 @@ const SingupTutor = () => {
           {errorMessage ? (
             <Text style={StylesLoginSingups.error}>{errorMessage}</Text>
           ) : null}
-          <TouchableOpacity style={StylesLoginSingups.button} onPress={saveTutor}>
-            <Text style={{ fontFamily: "NunitoSemiBold", fontSize: 23, color: "#FFFACD" }}>
+          <TouchableOpacity
+            style={StylesLoginSingups.button}
+            onPress={saveTutor}
+          >
+            <Text
+              style={{
+                fontFamily: "NunitoSemiBold",
+                fontSize: 23,
+                color: "#FFFACD",
+              }}
+            >
               ENVIAR
             </Text>
           </TouchableOpacity>

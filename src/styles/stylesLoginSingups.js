@@ -1,7 +1,6 @@
+//aqui estão os estilos da tela de login e das telas de cadastro
 
-//stylesLoginSingups.js
-
-import { StyleSheet} from "react-native";
+import { StyleSheet } from "react-native";
 import {
   widthPercentageToDP,
   heightPercentageToDP,
@@ -119,6 +118,7 @@ const StylesLoginSingups = StyleSheet.create({
     opacity: 0.3,
   },
 
+  // singupTutor
   passo1: {
     width: widthPercentageToDP("27%"),
     height: heightPercentageToDP("27%"),
@@ -146,6 +146,7 @@ const StylesLoginSingups = StyleSheet.create({
     opacity: 0.2,
   },
 
+  // singupCaozinho
   enviarFoto: {
     width: "22%",
     height: "22%",
